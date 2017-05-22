@@ -52,7 +52,7 @@ namespace SwissTransport
                 }
                 Cursor.Current = Cursors.Default;
             }
-            //Catches WebException for to many Requests
+            //Catches WebException for too many Requests
             catch (WebException ex)
             {
                 MessageBox.Show($"Zu viele Anfragen an den Server\nBitte kurz warten befor sie fortfahren\n\n{ex}");
@@ -69,7 +69,7 @@ namespace SwissTransport
             cboxto.Text = von;
             return;
         }
-        //
+        //When using the Dropdown event the Stations are getting Loaded in the Dropdown$
         private void cboxload_DropDown(object sender, EventArgs e)
         {
             ComboBox cboxload = (ComboBox)sender;
@@ -88,6 +88,10 @@ namespace SwissTransport
             }
         }
 
+        //Clears all Items from the Listview
+        //Changes the name of the Columnheaders
+        //Gets the StationBoard from the cboxfrom station and fills it into the Listview
+        //Sets the Cursor to Waitcursor until all Data is loaded into Listview
         private void btnshowtable_Click(object sender, EventArgs e)
         {
             Transport transport = new Transport();
@@ -118,6 +122,9 @@ namespace SwissTransport
             }
         }
 
+        //If text is filled in cboxto the btnsearch will be enabled
+        //If there is no Text in cboxto the btnsearch will be disabled
+        //If there is no Text in cboxto && There is Text in cboxfrom then btnshowtable will be enabled
         private void cbox_TextChanged(object sender, EventArgs e)
         {
             ComboBox cbox = (ComboBox)sender;
@@ -127,28 +134,59 @@ namespace SwissTransport
                 {
                     btnsearch.Enabled = true;
                     btnshowtable.Enabled = false;
+                    btnshowmapsfrom.Enabled = true;
+                    btnshowmapsto.Enabled = true;
                 }
                 else
                 {
                     btnsearch.Enabled = false;
                     btnshowtable.Enabled = true;
+                    btnshowmapsfrom.Enabled = true;
+                    btnshowmapsto.Enabled = false;
                 }
             }
             else
             {
                 btnsearch.Enabled = false;
                 btnshowtable.Enabled = false;
+                btnshowmapsfrom.Enabled = false;
+                if (cboxto.Text != "")
+                {
+                    btnshowmapsto.Enabled = true;
+                }
+                else
+                {
+                    btnshowmapsto.Enabled = false;
+                }
             }
         }
 
+        //Checks if Text is in cboxfrom and && Opens the Webbrowser with the Location which is in cboxfrom
         private void btnshowmapsfrom_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.google.ch/maps/search/" + cboxfrom.Text + " Haltestelle");
+            if(cboxfrom.Text != "")
+            {
+                System.Diagnostics.Process.Start("https://www.google.ch/maps/search/" + cboxfrom.Text + " Haltestelle");
+            }
+            else
+            {
+                MessageBox.Show("Bitte Zuerst den Abfahrtsort eingeben bevor Sie diesen Knopf drücken");
+            }
         }
-
+        //Checks if Text is in cboxto and && Opens the Webbrowser with the Location which is in cboxto
         private void btnshowmapsto_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://www.google.ch/maps/search/" + cboxto.Text + " Haltestelle");
+            if(cboxto.Text != "")
+            {
+                System.Diagnostics.Process.Start("https://www.google.ch/maps/search/" + cboxto.Text + " Haltestelle");
+            }
         }
+
+        //Shows your Location on Google Maps
+        private void btnmylocation_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.google.ch/maps/search/" + "Mein Standort");
+        }
+
     }
 }

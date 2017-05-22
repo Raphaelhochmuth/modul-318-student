@@ -44,14 +44,15 @@ namespace SwissTransport
             this.clmdauer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clmgleis = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnshowtable = new System.Windows.Forms.Button();
-            this.btnshowmapsstart = new System.Windows.Forms.Button();
-            this.btnshowmapsend = new System.Windows.Forms.Button();
+            this.btnshowmapsfrom = new System.Windows.Forms.Button();
+            this.btnshowmapsto = new System.Windows.Forms.Button();
+            this.btnmylocation = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblvon
             // 
             this.lblvon.AutoSize = true;
-            this.lblvon.Location = new System.Drawing.Point(25, 40);
+            this.lblvon.Location = new System.Drawing.Point(12, 49);
             this.lblvon.Name = "lblvon";
             this.lblvon.Size = new System.Drawing.Size(26, 13);
             this.lblvon.TabIndex = 0;
@@ -60,10 +61,10 @@ namespace SwissTransport
             // lblnach
             // 
             this.lblnach.AutoSize = true;
-            this.lblnach.Location = new System.Drawing.Point(419, 40);
+            this.lblnach.Location = new System.Drawing.Point(305, 49);
             this.lblnach.Name = "lblnach";
             this.lblnach.Size = new System.Drawing.Size(33, 13);
-            this.lblnach.TabIndex = 1;
+            this.lblnach.TabIndex = 0;
             this.lblnach.Text = "Nach";
             // 
             // cboxfrom
@@ -72,9 +73,9 @@ namespace SwissTransport
             this.cboxfrom.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboxfrom.ForeColor = System.Drawing.SystemColors.InfoText;
             this.cboxfrom.FormattingEnabled = true;
-            this.cboxfrom.Location = new System.Drawing.Point(28, 56);
+            this.cboxfrom.Location = new System.Drawing.Point(12, 65);
             this.cboxfrom.Name = "cboxfrom";
-            this.cboxfrom.Size = new System.Drawing.Size(217, 21);
+            this.cboxfrom.Size = new System.Drawing.Size(181, 21);
             this.cboxfrom.TabIndex = 0;
             this.cboxfrom.DropDown += new System.EventHandler(this.cboxload_DropDown);
             this.cboxfrom.TextChanged += new System.EventHandler(this.cbox_TextChanged);
@@ -83,53 +84,54 @@ namespace SwissTransport
             // 
             this.cboxto.ForeColor = System.Drawing.SystemColors.InfoText;
             this.cboxto.FormattingEnabled = true;
-            this.cboxto.Location = new System.Drawing.Point(422, 56);
+            this.cboxto.Location = new System.Drawing.Point(308, 65);
             this.cboxto.Name = "cboxto";
-            this.cboxto.Size = new System.Drawing.Size(217, 21);
+            this.cboxto.Size = new System.Drawing.Size(181, 21);
             this.cboxto.TabIndex = 2;
             this.cboxto.DropDown += new System.EventHandler(this.cboxload_DropDown);
             this.cboxto.TextChanged += new System.EventHandler(this.cbox_TextChanged);
             // 
             // btnchange
             // 
-            this.btnchange.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnchange.Location = new System.Drawing.Point(303, 40);
+            this.btnchange.BackColor = System.Drawing.Color.LightCyan;
+            this.btnchange.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnchange.Location = new System.Drawing.Point(214, 65);
             this.btnchange.Name = "btnchange";
-            this.btnchange.Size = new System.Drawing.Size(75, 48);
-            this.btnchange.TabIndex = 1;
-            this.btnchange.Text = "⟺";
-            this.btnchange.UseVisualStyleBackColor = true;
+            this.btnchange.Size = new System.Drawing.Size(75, 25);
+            this.btnchange.TabIndex = 4;
+            this.btnchange.Text = "<------>";
+            this.btnchange.UseVisualStyleBackColor = false;
             this.btnchange.Click += new System.EventHandler(this.btnchange_Click);
             // 
             // btnsearch
             // 
-            this.btnsearch.BackColor = System.Drawing.SystemColors.Control;
+            this.btnsearch.BackColor = System.Drawing.Color.LightCyan;
             this.btnsearch.Enabled = false;
             this.btnsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnsearch.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnsearch.Location = new System.Drawing.Point(675, 40);
+            this.btnsearch.Location = new System.Drawing.Point(514, 12);
             this.btnsearch.Name = "btnsearch";
-            this.btnsearch.Size = new System.Drawing.Size(205, 48);
-            this.btnsearch.TabIndex = 5;
+            this.btnsearch.Size = new System.Drawing.Size(205, 68);
+            this.btnsearch.TabIndex = 7;
             this.btnsearch.Text = "Verbindung suchen";
             this.btnsearch.UseVisualStyleBackColor = false;
             this.btnsearch.Click += new System.EventHandler(this.Btnsearch_Click);
             // 
             // dtetimecal
             // 
-            this.dtetimecal.Location = new System.Drawing.Point(28, 107);
+            this.dtetimecal.Location = new System.Drawing.Point(12, 116);
             this.dtetimecal.Name = "dtetimecal";
-            this.dtetimecal.Size = new System.Drawing.Size(217, 20);
-            this.dtetimecal.TabIndex = 3;
+            this.dtetimecal.Size = new System.Drawing.Size(181, 20);
+            this.dtetimecal.TabIndex = 5;
             // 
             // dtetimeclock
             // 
             this.dtetimeclock.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dtetimeclock.Location = new System.Drawing.Point(303, 107);
+            this.dtetimeclock.Location = new System.Drawing.Point(214, 116);
             this.dtetimeclock.Name = "dtetimeclock";
             this.dtetimeclock.ShowUpDown = true;
             this.dtetimeclock.Size = new System.Drawing.Size(75, 20);
-            this.dtetimeclock.TabIndex = 4;
+            this.dtetimeclock.TabIndex = 6;
             // 
             // liview
             // 
@@ -138,9 +140,9 @@ namespace SwissTransport
             this.clmankunft,
             this.clmdauer,
             this.clmgleis});
-            this.liview.Location = new System.Drawing.Point(28, 173);
+            this.liview.Location = new System.Drawing.Point(12, 161);
             this.liview.Name = "liview";
-            this.liview.Size = new System.Drawing.Size(852, 246);
+            this.liview.Size = new System.Drawing.Size(707, 199);
             this.liview.TabIndex = 8;
             this.liview.UseCompatibleStateImageBehavior = false;
             this.liview.View = System.Windows.Forms.View.Details;
@@ -166,45 +168,62 @@ namespace SwissTransport
             // 
             // btnshowtable
             // 
-            this.btnshowtable.BackColor = System.Drawing.SystemColors.Control;
+            this.btnshowtable.BackColor = System.Drawing.Color.LightCyan;
             this.btnshowtable.Enabled = false;
             this.btnshowtable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnshowtable.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnshowtable.Location = new System.Drawing.Point(675, 94);
+            this.btnshowtable.Location = new System.Drawing.Point(514, 86);
             this.btnshowtable.Name = "btnshowtable";
-            this.btnshowtable.Size = new System.Drawing.Size(205, 48);
-            this.btnshowtable.TabIndex = 6;
+            this.btnshowtable.Size = new System.Drawing.Size(205, 68);
+            this.btnshowtable.TabIndex = 8;
             this.btnshowtable.Text = "Fahrplan anzeigen";
             this.btnshowtable.UseVisualStyleBackColor = false;
             this.btnshowtable.Click += new System.EventHandler(this.btnshowtable_Click);
             // 
-            // btnshowmapsstart
+            // btnshowmapsfrom
             // 
-            this.btnshowmapsstart.Location = new System.Drawing.Point(28, 78);
-            this.btnshowmapsstart.Name = "btnshowmapsstart";
-            this.btnshowmapsstart.Size = new System.Drawing.Size(217, 23);
-            this.btnshowmapsstart.TabIndex = 9;
-            this.btnshowmapsstart.Text = "Abfahrtsort anzeigen(Maps)";
-            this.btnshowmapsstart.UseVisualStyleBackColor = true;
-            this.btnshowmapsstart.Click += new System.EventHandler(this.btnshowmapsfrom_Click);
+            this.btnshowmapsfrom.BackColor = System.Drawing.Color.LightCyan;
+            this.btnshowmapsfrom.Location = new System.Drawing.Point(12, 87);
+            this.btnshowmapsfrom.Name = "btnshowmapsfrom";
+            this.btnshowmapsfrom.Size = new System.Drawing.Size(181, 23);
+            this.btnshowmapsfrom.TabIndex = 1;
+            this.btnshowmapsfrom.Text = "Abfahrtsort anzeigen(Maps)";
+            this.btnshowmapsfrom.UseVisualStyleBackColor = false;
+            this.btnshowmapsfrom.Click += new System.EventHandler(this.btnshowmapsfrom_Click);
+            this.btnshowmapsfrom.Enabled = false;
             // 
-            // btnshowmapsend
+            // btnshowmapsto
             // 
-            this.btnshowmapsend.Location = new System.Drawing.Point(422, 78);
-            this.btnshowmapsend.Name = "btnshowmapsend";
-            this.btnshowmapsend.Size = new System.Drawing.Size(217, 23);
-            this.btnshowmapsend.TabIndex = 10;
-            this.btnshowmapsend.Text = "Ankunftsort anzeigen(Maps)";
-            this.btnshowmapsend.UseVisualStyleBackColor = true;
-            this.btnshowmapsend.Click += new System.EventHandler(this.btnshowmapsto_Click);
+            this.btnshowmapsto.BackColor = System.Drawing.Color.LightCyan;
+            this.btnshowmapsto.Location = new System.Drawing.Point(308, 87);
+            this.btnshowmapsto.Name = "btnshowmapsto";
+            this.btnshowmapsto.Size = new System.Drawing.Size(181, 23);
+            this.btnshowmapsto.TabIndex = 3;
+            this.btnshowmapsto.Text = "Ankunftsort anzeigen(Maps)";
+            this.btnshowmapsto.UseVisualStyleBackColor = false;
+            this.btnshowmapsto.Click += new System.EventHandler(this.btnshowmapsto_Click);
+            this.btnshowmapsto.Enabled = false;
+            // 
+            // btnmylocation
+            // 
+            this.btnmylocation.BackColor = System.Drawing.Color.LightCyan;
+            this.btnmylocation.Location = new System.Drawing.Point(308, 112);
+            this.btnmylocation.Name = "btnmylocation";
+            this.btnmylocation.Size = new System.Drawing.Size(181, 23);
+            this.btnmylocation.TabIndex = 9;
+            this.btnmylocation.Text = "Mein Standort";
+            this.btnmylocation.UseVisualStyleBackColor = false;
+            this.btnmylocation.Click += new System.EventHandler(this.btnmylocation_Click);
             // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(906, 431);
-            this.Controls.Add(this.btnshowmapsend);
-            this.Controls.Add(this.btnshowmapsstart);
+            this.BackColor = System.Drawing.Color.LightBlue;
+            this.ClientSize = new System.Drawing.Size(731, 369);
+            this.Controls.Add(this.btnmylocation);
+            this.Controls.Add(this.btnshowmapsto);
+            this.Controls.Add(this.btnshowmapsfrom);
             this.Controls.Add(this.btnshowtable);
             this.Controls.Add(this.liview);
             this.Controls.Add(this.dtetimeclock);
@@ -215,6 +234,8 @@ namespace SwissTransport
             this.Controls.Add(this.cboxfrom);
             this.Controls.Add(this.lblnach);
             this.Controls.Add(this.lblvon);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Schweizer Fahrplan";
@@ -241,7 +262,8 @@ namespace SwissTransport
         private ColumnHeader clmabfahrt;
         private ColumnHeader clmankunft;
         private ColumnHeader clmdauer;
-        private Button btnshowmapsstart;
-        private Button btnshowmapsend;
+        private Button btnshowmapsfrom;
+        private Button btnshowmapsto;
+        private Button btnmylocation;
     }
 }
