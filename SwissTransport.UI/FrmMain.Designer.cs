@@ -183,6 +183,7 @@ namespace SwissTransport
             // btnshowmapsfrom
             // 
             this.btnshowmapsfrom.BackColor = System.Drawing.Color.LightCyan;
+            this.btnshowmapsfrom.Enabled = false;
             this.btnshowmapsfrom.Location = new System.Drawing.Point(12, 87);
             this.btnshowmapsfrom.Name = "btnshowmapsfrom";
             this.btnshowmapsfrom.Size = new System.Drawing.Size(181, 23);
@@ -190,11 +191,11 @@ namespace SwissTransport
             this.btnshowmapsfrom.Text = "Abfahrtsort anzeigen(Maps)";
             this.btnshowmapsfrom.UseVisualStyleBackColor = false;
             this.btnshowmapsfrom.Click += new System.EventHandler(this.btnshowmapsfrom_Click);
-            this.btnshowmapsfrom.Enabled = false;
             // 
             // btnshowmapsto
             // 
             this.btnshowmapsto.BackColor = System.Drawing.Color.LightCyan;
+            this.btnshowmapsto.Enabled = false;
             this.btnshowmapsto.Location = new System.Drawing.Point(308, 87);
             this.btnshowmapsto.Name = "btnshowmapsto";
             this.btnshowmapsto.Size = new System.Drawing.Size(181, 23);
@@ -202,7 +203,6 @@ namespace SwissTransport
             this.btnshowmapsto.Text = "Ankunftsort anzeigen(Maps)";
             this.btnshowmapsto.UseVisualStyleBackColor = false;
             this.btnshowmapsto.Click += new System.EventHandler(this.btnshowmapsto_Click);
-            this.btnshowmapsto.Enabled = false;
             // 
             // btnmylocation
             // 
@@ -234,6 +234,7 @@ namespace SwissTransport
             this.Controls.Add(this.cboxfrom);
             this.Controls.Add(this.lblnach);
             this.Controls.Add(this.lblvon);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmMain";
