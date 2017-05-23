@@ -103,6 +103,7 @@ namespace SwissTransport
             {
                 try
                 {
+                    //ColumnHeaders of Listview getting renamed
                     Cursor.Current = Cursors.WaitCursor;
                     clmankunft.Text = "Nach";
                     clmdauer.Text = "Typ";
