@@ -13,10 +13,10 @@ namespace SwissTransport
 {
     public partial class FrmMain : Form
     {
+
         public FrmMain()
         {
             InitializeComponent();
-
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -35,13 +35,14 @@ namespace SwissTransport
             clmankunft.Text = "Ankunft";
             clmdauer.Text = "Dauer";
             clmgleis.Text =  "Gleis";
-
+            DateTime dtetimeclock = this.dtetimeclock.Value;
+            DateTime dtetimecal = this.dtetimecal.Value;
             try
             {
                 //Change the Cursor to WaitCursor
                 //Gets the next 4 Connections from Connectionlist and insert them into Listview
                 Cursor.Current = Cursors.WaitCursor;
-                foreach (Connection conn in transport.GetConnections(cboxfrom.Text, cboxto.Text).ConnectionList)
+                foreach (Connection conn in transport.GetConnections(cboxfrom.Text, cboxto.Text,dtetimecal ,dtetimeclock).ConnectionList)
                 {
                 
                     DateTime abfahrt = DateTime.Parse(conn.From.Departure);
@@ -95,6 +96,8 @@ namespace SwissTransport
         private void btnshowtable_Click(object sender, EventArgs e)
         {
             Transport transport = new Transport();
+            DateTime dtetimeclock = this.dtetimeclock.Value;
+            DateTime dtetimecal = this.dtetimecal.Value;
             liview.Items.Clear();
             if (cboxfrom.Text != "")
             {
@@ -106,7 +109,7 @@ namespace SwissTransport
                     clmgleis.Text = "Anbieter";
 
                     string id = transport.GetStations(cboxfrom.Text).StationList[0].Id;
-                    StationBoardRoot sbr = transport.GetStationBoard(cboxfrom.Text, id);
+                    StationBoardRoot sbr = transport.GetStationBoard(cboxfrom.Text, id, dtetimecal, dtetimeclock);
                     foreach (StationBoard stb in sbr.Entries)
                     {
                         String[] item = { stb.Stop.Departure.ToString(), stb.To, stb.Name, stb.Operator };
@@ -115,9 +118,9 @@ namespace SwissTransport
                     }
                     Cursor.Current = Cursors.Default;
                 }
-                catch (WebException ex)
+                catch (Exception ex)
                 {
-                    MessageBox.Show($"Zu viele Anfragen an den Server\nBitte kurz warten befor sie fortfahren\n\n{ex}");
+                    MessageBox.Show($"Zu viele Anfragen an den Server\nBitte kurz warten befor sie fortfahren\n\n");
                 }
             }
         }

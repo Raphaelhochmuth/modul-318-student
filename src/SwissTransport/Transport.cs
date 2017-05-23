@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Net;
 using Newtonsoft.Json;
+using System;
 
 namespace SwissTransport
 {
@@ -22,9 +23,10 @@ namespace SwissTransport
             return null;
         }
 
-        public StationBoardRoot GetStationBoard(string station, string id)
+        public StationBoardRoot GetStationBoard(string station, string id, DateTime dtetimecal, DateTime dtetimeclock)
         {
-            var request = CreateWebRequest("http://transport.opendata.ch/v1/stationboard?Station=" + station + "&id=" + id);
+            DateTime dtdatetime = dtetimecal.Date + dtetimeclock.TimeOfDay;
+            var request = CreateWebRequest("http://transport.opendata.ch/v1/stationboard?Station=" + station + "&id=" + id + "&datetime=" + dtdatetime.ToString("dd.MM.yyyy HH:mm"));
             var response = request.GetResponse();
             var responseStream = response.GetResponseStream();
 
@@ -39,9 +41,9 @@ namespace SwissTransport
             return null;
         }
 
-        public Connections GetConnections(string fromStation, string toStattion)
+        public Connections GetConnections(string fromStation, string toStattion, DateTime dtetimecal, DateTime dtetimeclock)
         {
-            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStattion);
+            var request = CreateWebRequest("http://transport.opendata.ch/v1/connections?from=" + fromStation + "&to=" + toStattion + "&date=" + dtetimecal.ToString("dd.MM.yyyy") + "&time=" + dtetimeclock.ToString("HH:mm"));
             var response = request.GetResponse();
             var responseStream = response.GetResponseStream();
 
