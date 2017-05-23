@@ -30,6 +30,7 @@ namespace SwissTransport
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.lblvon = new System.Windows.Forms.Label();
             this.lblnach = new System.Windows.Forms.Label();
             this.cboxfrom = new System.Windows.Forms.ComboBox();
@@ -235,6 +236,7 @@ namespace SwissTransport
             this.Controls.Add(this.lblnach);
             this.Controls.Add(this.lblvon);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmMain";
